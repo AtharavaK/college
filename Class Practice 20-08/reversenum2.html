@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reverse Number</title>
+	<style>
+		body {
+			min-height: 100vh;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			font-family: Arial, sans-serif;
+			font-size: 24px;
+			background-color: #d9efff;
+			color: #16466b;
+		}
+
+		h2 {
+			font-size: 40px;
+		}
+
+		input,
+		button {
+			font-size: 22px;
+			padding: 8px;
+			margin: 6px;
+			color: #16466b;
+			border: 2px solid #5c9bc7;
+			border-radius: 6px;
+		}
+
+		button {
+			cursor: pointer;
+			background-color: #a9d6f5;
+			font-weight: bold;
+		}
+
+		#result {
+			font-size: 28px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h2>Reverse a Number</h2>
+
+	<label for="number">Enter a number:</label>
+	<input type="number" id="number">
+	<button onclick="reverseNumber()">Reverse</button>
+
+	<p id="result"></p>
+
+	<script>
+		function reverseNumber() {
+			const value = document.getElementById("number").value;
+			const result = document.getElementById("result");
+
+			if (value === "") {
+				result.textContent = "Please enter a number.";
+				return;
+			}
+
+			const number = Number(value);
+			const sign = number < 0 ? -1 : 1;
+			let remaining = Math.abs(number);
+			let reversed = 0;
+
+			while (remaining > 0) {
+				const digit = remaining % 10;
+				reversed = reversed * 10 + digit;
+				remaining = Math.floor(remaining / 10);
+			}
+
+			result.textContent = "Reversed number: " + (reversed * sign);
+		}
+	</script>
+</body>
+</html>

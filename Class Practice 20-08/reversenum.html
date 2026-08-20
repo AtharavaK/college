@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Number Menu</title>
+	<style>
+		body {
+			min-height: 100vh;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			font-family: Arial, sans-serif;
+			font-size: 24px;
+			background-color: #ffd9e2;
+			color: #7a1f3d;
+		}
+
+		h2 {
+			font-size: 40px;
+		}
+
+		select,
+		input,
+		button {
+			font-size: 22px;
+			padding: 8px;
+			margin: 6px;
+			color: #7a1f3d;
+			border: 2px solid #c94f72;
+			border-radius: 6px;
+		}
+
+		button {
+			cursor: pointer;
+			background-color: #f29ab2;
+			font-weight: bold;
+		}
+
+		#result {
+			font-size: 28px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h2>Number Menu</h2>
+
+	<label for="choice">Choose an operation:</label>
+	<select id="choice">
+		<option value="sum">Sum of Digits</option>
+		<option value="reverse">Reverse Number</option>
+	</select>
+	<br><br>
+
+	<label for="number">Enter a number:</label>
+	<input type="number" id="number">
+	<button onclick="performOperation()">Calculate</button>
+
+	<p id="result"></p>
+
+	<script>
+		function performOperation() {
+			const choice = document.getElementById("choice").value;
+			const value = document.getElementById("number").value;
+			const result = document.getElementById("result");
+
+			if (value === "") {
+				result.textContent = "Please enter a number.";
+				return;
+			}
+
+			const number = Number(value);
+
+			switch (choice) {
+				case "sum":
+					result.textContent = "Sum of digits: " + sumOfDigits(number);
+					break;
+				case "reverse":
+					result.textContent = "Reversed number: " + reverseNumber(number);
+					break;
+				default:
+					result.textContent = "Please choose an operation.";
+			}
+		}
+
+		function sumOfDigits(number) {
+			const digits = Math.abs(number).toString();
+			let sum = 0;
+
+			for (const digit of digits) {
+				switch (digit) {
+					case "0": sum += 0; break;
+					case "1": sum += 1; break;
+					case "2": sum += 2; break;
+					case "3": sum += 3; break;
+					case "4": sum += 4; break;
+					case "5": sum += 5; break;
+					case "6": sum += 6; break;
+					case "7": sum += 7; break;
+					case "8": sum += 8; break;
+					case "9": sum += 9; break;
+				}
+			}
+
+			return sum;
+		}
+
+		function reverseNumber(number) {
+			const sign = number < 0 ? -1 : 1;
+			let remaining = Math.abs(number);
+			let reversed = 0;
+
+			while (remaining > 0) {
+				const digit = remaining % 10;
+				reversed = reversed * 10 + digit;
+				remaining = Math.floor(remaining / 10);
+			}
+
+			return reversed * sign;
+		}
+	</script>
+</body>
+</html>

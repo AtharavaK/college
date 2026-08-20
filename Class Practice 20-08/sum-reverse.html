@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sum and Reverse Number</title>
+	<style>
+		body {
+			min-height: 100vh;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			font-family: Arial, sans-serif;
+			font-size: 24px;
+			background-color: #fff4b8;
+			color: #6b5600;
+		}
+
+		h2 {
+			font-size: 40px;
+		}
+
+		input,
+		button {
+			font-size: 22px;
+			padding: 8px;
+			margin: 6px;
+			color: #6b5600;
+			border: 2px solid #c9a928;
+			border-radius: 6px;
+		}
+
+		button {
+			cursor: pointer;
+			background-color: #f5d96b;
+			font-weight: bold;
+		}
+
+		#result {
+			font-size: 28px;
+			font-weight: bold;
+			line-height: 1.6;
+		}
+	</style>
+</head>
+<body>
+	<h2>Sum and Reverse Number</h2>
+
+	<label for="number">Enter a number:</label>
+	<input type="number" id="number">
+	<button onclick="calculateNumber()">Calculate</button>
+
+	<p id="result"></p>
+
+	<script>
+		function calculateNumber() {
+			const value = document.getElementById("number").value;
+			const result = document.getElementById("result");
+
+			if (value === "") {
+				result.textContent = "Please enter a number.";
+				return;
+			}
+
+			const number = Number(value);
+			const sign = number < 0 ? -1 : 1;
+			let remaining = Math.abs(number);
+			let sum = 0;
+			let reversed = 0;
+
+			if (remaining === 0) {
+				sum = 0;
+			} else {
+				while (remaining > 0) {
+					const digit = remaining % 10;
+					sum += digit;
+					reversed = reversed * 10 + digit;
+					remaining = Math.floor(remaining / 10);
+				}
+			}
+
+			result.innerHTML = "Sum of digits: " + sum + "<br>Reversed number: " + (reversed * sign);
+		}
+	</script>
+</body>
+</html>

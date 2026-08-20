@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sum of Digits</title>
+</head>
+<body>
+	<h2>Sum of Digits</h2>
+
+	<label for="number">Enter a number:</label>
+	<input type="number" id="number">
+	<button onclick="sumOfDigits()">Calculate</button>
+
+	<p id="result"></p>
+
+	<script>
+		function sumOfDigits() {
+			const value = document.getElementById("number").value;
+			const result = document.getElementById("result");
+
+			if (value === "") {
+				result.textContent = "Please enter a number.";
+				return;
+			}
+
+			const digits = Math.abs(Number(value)).toString();
+			let sum = 0;
+
+			for (const digit of digits) {
+				switch (digit) {
+					case "0":
+						sum += 0;
+						break;
+					case "1":
+						sum += 1;
+						break;
+					case "2":
+						sum += 2;
+						break;
+					case "3":
+						sum += 3;
+						break;
+					case "4":
+						sum += 4;
+						break;
+					case "5":
+						sum += 5;
+						break;
+					case "6":
+						sum += 6;
+						break;
+					case "7":
+						sum += 7;
+						break;
+					case "8":
+						sum += 8;
+						break;
+					case "9":
+						sum += 9;
+						break;
+				}
+			}
+
+			result.textContent = "Sum of digits: " + sum;
+		}
+	</script>
+</body>
+</html>

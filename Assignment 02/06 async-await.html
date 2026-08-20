@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+    function fetchData(){
+return new Promise(resolve=>{
+setTimeout(()=>{
+resolve("Student data not found");
+},2000);
+});
+}
+async function displayData(){
+let data =await fetchData();
+document.write(data);
+}
+displayData();
+</script>
+</body>
+</html>
